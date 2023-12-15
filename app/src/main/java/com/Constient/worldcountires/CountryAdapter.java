@@ -46,7 +46,12 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
             } else {
                 holder.countryName.setText("N/A");
             }
-            holder.capital.setText("Capital: " + country.getCapital().get(0));
+            List<String> capitals = country.getCapital();
+            if (capitals != null && !capitals.isEmpty()) {
+                holder.capital.setText("Capital: " + capitals.get(0));
+            } else {
+                holder.capital.setText("Capital: Not available in Api");
+            }
             holder.population.setText("Population: " + country.getPopulation());
             holder.region.setText("Region: " + country.getRegion());
 
